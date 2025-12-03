@@ -183,6 +183,15 @@
             color: #666;
             font-size: 0.9em;
         }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: 600;
+            color: #856404;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -191,175 +200,496 @@
         <p class="subtitle">Fill in the blanks with the correct past tense form</p>
 
         <div id="exercises-container"></div>
-
-        <div class="stats">
-            <h2>Your Progress</h2>
-            <div class="stats-numbers">
-                <div class="stat-item">
-                    <div class="stat-value" id="correct-count">0</div>
-                    <div class="stat-label">Correct</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="incorrect-count">0</div>
-                    <div class="stat-label">Incorrect</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="total-count">0</div>
-                    <div class="stat-label">Total</div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script>
         const exercises = [
+            // Set 1: Simple Past (1-12)
             {
                 id: 1,
-                sentence: "Last week, my brother ___ (buy) a new bicycle.",
-                answer: "bought",
+                sentence: "Last Monday, Sarah ___ (visit) her grandmother in the countryside.",
+                answer: "visited",
                 tense: "Simple Past",
-                hint: "Simple Past is used for completed actions at a specific time in the past (last week)."
+                hint: "Simple Past is used for completed actions at a specific time in the past (last Monday).",
+                cues: ["last monday"]
             },
             {
                 id: 2,
-                sentence: "I ___ (read) three books this month already.",
-                answer: "have read",
-                tense: "Present Perfect",
-                hint: "Present Perfect is used for actions completed in a period that includes the present (this month)."
+                sentence: "Three years ago, they ___ (build) their dream house.",
+                answer: "built",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (three years ago).",
+                cues: ["three years ago"]
             },
             {
                 id: 3,
-                sentence: "The students ___ (practice) for two hours when the teacher entered.",
-                answer: "had been practicing",
-                tense: "Past Perfect Progressive",
-                hint: "Past Perfect Progressive shows duration of an action before another past event (for two hours when)."
+                sentence: "Yesterday afternoon, the children ___ (play) soccer in the park.",
+                answer: "played",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (yesterday afternoon).",
+                cues: ["yesterday afternoon"]
             },
             {
                 id: 4,
-                sentence: "When I called her, she ___ (cook) dinner.",
-                answer: "was cooking",
-                tense: "Past Progressive",
-                hint: "Past Progressive describes an action in progress when another action occurred (when I called)."
+                sentence: "In 2020, many people ___ (start) working from home.",
+                answer: "started",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (in 2020).",
+                cues: ["in 2020"]
             },
             {
                 id: 5,
-                sentence: "They ___ (not/visit) the museum before last Tuesday.",
-                answer: "had not visited",
-                tense: "Past Perfect",
-                hint: "Past Perfect is used for actions completed before another past action (before last Tuesday)."
+                sentence: "Last night, I ___ (watch) an interesting documentary on TV.",
+                answer: "watched",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (last night).",
+                cues: ["last night"]
             },
             {
                 id: 6,
-                sentence: "Two days ago, we ___ (meet) our old friends at the park.",
-                answer: "met",
+                sentence: "Five minutes ago, the train ___ (arrive) at the station.",
+                answer: "arrived",
                 tense: "Simple Past",
-                hint: "Simple Past is used for completed actions at a specific time in the past (two days ago)."
+                hint: "Simple Past is used for completed actions at a specific time in the past (five minutes ago).",
+                cues: ["five minutes ago"]
             },
             {
                 id: 7,
-                sentence: "She ___ (work) here for five years now.",
-                answer: "has worked",
-                tense: "Present Perfect",
-                hint: "Present Perfect with 'for' shows duration from past to present (for five years now)."
+                sentence: "When I was young, I ___ (live) in a small village.",
+                answer: "lived",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions in the past (when I was young).",
+                cues: ["when i was young"]
             },
             {
                 id: 8,
-                sentence: "The dog ___ (bark) all night, which kept us awake.",
-                answer: "was barking",
-                tense: "Past Progressive",
-                hint: "Past Progressive is used for actions in progress over a period in the past (all night)."
+                sentence: "Last summer, we ___ (travel) across Europe for two months.",
+                answer: "traveled",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (last summer).",
+                cues: ["last summer"]
             },
             {
                 id: 9,
-                sentence: "Before the exam started, I ___ (review) all my notes.",
-                answer: "had reviewed",
-                tense: "Past Perfect",
-                hint: "Past Perfect shows an action completed before another past action (before the exam started)."
+                sentence: "The meeting ___ (end) at 5 PM sharp yesterday.",
+                answer: "ended",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (at 5 PM sharp yesterday).",
+                cues: ["at 5 pm", "yesterday"]
             },
             {
                 id: 10,
-                sentence: "He ___ (drive) for six hours when he finally reached the destination.",
-                answer: "had been driving",
-                tense: "Past Perfect Progressive",
-                hint: "Past Perfect Progressive emphasizes duration before another past action (for six hours when)."
+                sentence: "A week ago, my sister ___ (graduate) from university.",
+                answer: "graduated",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (a week ago).",
+                cues: ["a week ago"]
             },
             {
                 id: 11,
-                sentence: "In 2019, my family ___ (move) to a new house.",
-                answer: "moved",
+                sentence: "In the morning, he ___ (take) a long walk along the beach.",
+                answer: "took",
                 tense: "Simple Past",
-                hint: "Simple Past is used for completed actions at a specific time in the past (in 2019)."
+                hint: "Simple Past is used for completed actions in the past (in the morning).",
+                cues: ["in the morning"]
             },
             {
                 id: 12,
-                sentence: "I ___ (never/be) to Australia, but I'd love to visit.",
-                answer: "have never been",
-                tense: "Present Perfect",
-                hint: "Present Perfect is used for life experiences without a specific time (never...before)."
+                sentence: "The concert ___ (begin) at 8 PM last Saturday.",
+                answer: "began",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (at 8 PM last Saturday).",
+                cues: ["at 8 pm", "last saturday"]
             },
+            // Set 1: Present Perfect (13-24)
             {
                 id: 13,
-                sentence: "While they ___ (watch) TV, the power went out.",
-                answer: "were watching",
-                tense: "Past Progressive",
-                hint: "Past Progressive is used for an action in progress when interrupted (while...when)."
+                sentence: "I ___ (never/try) Japanese food before today.",
+                answer: "have never tried",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used for experiences in the past without a specific time (never...before).",
+                cues: ["never", "before"]
             },
             {
                 id: 14,
-                sentence: "By the time she got home, her parents ___ (already/leave).",
-                answer: "had already left",
-                tense: "Past Perfect",
-                hint: "Past Perfect with 'by the time' shows completion before another past action."
+                sentence: "She ___ (work) at this company for ten years.",
+                answer: "has worked",
+                tense: "Present Perfect",
+                hint: "Present Perfect with 'for' shows duration from past to present (for ten years).",
+                cues: ["for ten years"]
             },
             {
                 id: 15,
-                sentence: "The athlete ___ (train) for months before the competition.",
-                answer: "had been training",
-                tense: "Past Perfect Progressive",
-                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for months before)."
+                sentence: "How long ___ (you/know) your best friend?",
+                answer: "have you known",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used with 'how long' to ask about duration from past to present.",
+                cues: ["how long"]
             },
             {
                 id: 16,
-                sentence: "Yesterday morning, I ___ (wake) up at 6 AM.",
-                answer: "woke",
-                tense: "Simple Past",
-                hint: "Simple Past is used for completed actions at a specific time in the past (yesterday morning)."
+                sentence: "We ___ (already/finish) our homework, so we can go out now.",
+                answer: "have already finished",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used for recently completed actions with present relevance (already...so we can).",
+                cues: ["already", "so we can"]
             },
             {
                 id: 17,
-                sentence: "How many times ___ (you/see) that movie?",
-                answer: "have you seen",
+                sentence: "I ___ (live) here since 2015.",
+                answer: "have lived",
                 tense: "Present Perfect",
-                hint: "Present Perfect is used to ask about experiences or actions up to now (how many times)."
+                hint: "Present Perfect with 'since' shows a state or action that started in the past and continues.",
+                cues: ["since 2015"]
             },
             {
                 id: 18,
-                sentence: "At midnight, we ___ (still/dance) at the party.",
-                answer: "were still dancing",
-                tense: "Past Progressive",
-                hint: "Past Progressive is used for actions at a specific time in the past (at midnight)."
+                sentence: "They ___ (not/see) each other for a long time.",
+                answer: "have not seen",
+                tense: "Present Perfect",
+                hint: "Present Perfect with 'for' shows duration from past to present (for a long time).",
+                cues: ["for a long time"]
             },
             {
                 id: 19,
-                sentence: "The team ___ (lose) three matches before they finally won one.",
-                answer: "had lost",
-                tense: "Past Perfect",
-                hint: "Past Perfect shows the sequence of past events (lost three matches before they won)."
+                sentence: "This year, I ___ (read) more than twenty books.",
+                answer: "have read",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used for actions completed in a period that includes the present (this year).",
+                cues: ["this year"]
             },
             {
                 id: 20,
-                sentence: "She ___ (study) English for three years when she passed the exam.",
+                sentence: "Have you ever ___ (be) to Paris?",
+                answer: "been",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used to ask about life experiences (have you ever).",
+                cues: ["have you ever"]
+            },
+            {
+                id: 21,
+                sentence: "My parents ___ (just/return) from their vacation.",
+                answer: "have just returned",
+                tense: "Present Perfect",
+                hint: "Present Perfect with 'just' shows a very recent action (just returned).",
+                cues: ["just"]
+            },
+            {
+                id: 22,
+                sentence: "I ___ (not/eat) anything since breakfast.",
+                answer: "have not eaten",
+                tense: "Present Perfect",
+                hint: "Present Perfect with 'since' shows duration from a point in the past to now (since breakfast).",
+                cues: ["since breakfast"]
+            },
+            {
+                id: 23,
+                sentence: "She ___ (change) a lot over the past few years.",
+                answer: "has changed",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used for actions in a period up to now (over the past few years).",
+                cues: ["over the past few years"]
+            },
+            {
+                id: 24,
+                sentence: "We ___ (wait) here for thirty minutes already.",
+                answer: "have waited",
+                tense: "Present Perfect",
+                hint: "Present Perfect with 'for' shows duration from past to present (for thirty minutes already).",
+                cues: ["for thirty minutes", "already"]
+            },
+            // Set 2: Past Perfect (25-36)
+            {
+                id: 25,
+                sentence: "By the time we arrived, the restaurant ___ (already/close).",
+                answer: "had already closed",
+                tense: "Past Perfect",
+                hint: "Past Perfect with 'by the time' shows completion before another past action.",
+                cues: ["by the time", "already"]
+            },
+            {
+                id: 26,
+                sentence: "After she ___ (finish) her degree, she moved to London.",
+                answer: "had finished",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows the sequence of past events (after she finished, then she moved).",
+                cues: ["after"]
+            },
+            {
+                id: 27,
+                sentence: "They ___ (not/meet) before the conference last week.",
+                answer: "had not met",
+                tense: "Past Perfect",
+                hint: "Past Perfect is used for actions before another past action (before the conference).",
+                cues: ["before"]
+            },
+            {
+                id: 28,
+                sentence: "The movie ___ (start) by the time we got to the cinema.",
+                answer: "had started",
+                tense: "Past Perfect",
+                hint: "Past Perfect with 'by the time' shows completion before another past action.",
+                cues: ["by the time"]
+            },
+            {
+                id: 29,
+                sentence: "I realized I ___ (forget) my keys at home.",
+                answer: "had forgotten",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows an action completed before another past action (realized).",
+                cues: ["realized"]
+            },
+            {
+                id: 30,
+                sentence: "Before he left, he ___ (check) all the windows.",
+                answer: "had checked",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows an action completed before another past action (before he left).",
+                cues: ["before"]
+            },
+            {
+                id: 31,
+                sentence: "She ___ (never/visit) that museum until last month.",
+                answer: "had never visited",
+                tense: "Past Perfect",
+                hint: "Past Perfect is used for actions before another past action (never...until last month).",
+                cues: ["never", "until"]
+            },
+            {
+                id: 32,
+                sentence: "By 2019, he ___ (write) five novels.",
+                answer: "had written",
+                tense: "Past Perfect",
+                hint: "Past Perfect is used for actions completed before a specific time in the past (by 2019).",
+                cues: ["by 2019"]
+            },
+            {
+                id: 33,
+                sentence: "The students ___ (complete) the test before the bell rang.",
+                answer: "had completed",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows an action completed before another past action (before the bell rang).",
+                cues: ["before"]
+            },
+            {
+                id: 34,
+                sentence: "When I called, they ___ (already/leave) the building.",
+                answer: "had already left",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows completion before another past action (when I called, they had already left).",
+                cues: ["when", "already"]
+            },
+            {
+                id: 35,
+                sentence: "After the storm ___ (pass), we went outside to assess the damage.",
+                answer: "had passed",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows the sequence of past events (after the storm passed, then we went).",
+                cues: ["after"]
+            },
+            {
+                id: 36,
+                sentence: "He ___ (not/eat) anything before the meeting started.",
+                answer: "had not eaten",
+                tense: "Past Perfect",
+                hint: "Past Perfect is used for actions before another past action (before the meeting started).",
+                cues: ["before"]
+            },
+            // Set 2: Past Progressive (37-48)
+            {
+                id: 37,
+                sentence: "While I ___ (study), my phone rang.",
+                answer: "was studying",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when interrupted (while...when).",
+                cues: ["while", "when"]
+            },
+            {
+                id: 38,
+                sentence: "At 9 PM yesterday, we ___ (watch) a movie together.",
+                answer: "were watching",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for actions at a specific time in the past (at 9 PM yesterday).",
+                cues: ["at 9 pm", "yesterday"]
+            },
+            {
+                id: 39,
+                sentence: "The children ___ (play) in the garden when it started raining.",
+                answer: "were playing",
+                tense: "Past Progressive",
+                hint: "Past Progressive describes an ongoing action interrupted by another action (when it started).",
+                cues: ["when"]
+            },
+            {
+                id: 40,
+                sentence: "I ___ (drive) to work when I saw the accident.",
+                answer: "was driving",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when another action happened (when I saw).",
+                cues: ["when"]
+            },
+            {
+                id: 41,
+                sentence: "What ___ (you/do) at this time yesterday?",
+                answer: "were you doing",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for actions at a specific time in the past (at this time yesterday).",
+                cues: ["at this time", "yesterday"]
+            },
+            {
+                id: 42,
+                sentence: "The phone rang while she ___ (take) a shower.",
+                answer: "was taking",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when interrupted (while...when).",
+                cues: ["while"]
+            },
+            {
+                id: 43,
+                sentence: "They ___ (wait) for the bus when it suddenly started to rain.",
+                answer: "were waiting",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when another action happened (when it started).",
+                cues: ["when"]
+            },
+            {
+                id: 44,
+                sentence: "During the party, everyone ___ (dance) to the music.",
+                answer: "was dancing",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for actions in progress over a period in the past (during the party).",
+                cues: ["during"]
+            },
+            {
+                id: 45,
+                sentence: "I ___ (read) a book when the lights went out.",
+                answer: "was reading",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when interrupted (when the lights went out).",
+                cues: ["when"]
+            },
+            {
+                id: 46,
+                sentence: "The students ___ (still/work) on their projects at midnight.",
+                answer: "were still working",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for actions at a specific time in the past (at midnight).",
+                cues: ["still", "at midnight"]
+            },
+            {
+                id: 47,
+                sentence: "While he ___ (cook) dinner, his wife was setting the table.",
+                answer: "was cooking",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for actions in progress at a specific time in the past (while).",
+                cues: ["while"]
+            },
+            {
+                id: 48,
+                sentence: "The sun ___ (shine) brightly when we left the house.",
+                answer: "was shining",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when another action happened (when we left).",
+                cues: ["when"]
+            },
+            // Set 3: Past Perfect Progressive (49-60)
+            {
+                id: 49,
+                sentence: "She ___ (teach) at that school for ten years before she retired.",
+                answer: "had been teaching",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for ten years before).",
+                cues: ["for ten years", "before"]
+            },
+            {
+                id: 50,
+                sentence: "They ___ (travel) for hours when they finally found a hotel.",
+                answer: "had been traveling",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive emphasizes duration before another past action (for hours when).",
+                cues: ["for hours", "when"]
+            },
+            {
+                id: 51,
+                sentence: "He ___ (work) on the project for three months when he submitted it.",
+                answer: "had been working",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration before another past action (for three months when).",
+                cues: ["for three months", "when"]
+            },
+            {
+                id: 52,
+                sentence: "I ___ (study) English for two years before I moved to London.",
                 answer: "had been studying",
                 tense: "Past Perfect Progressive",
-                hint: "Past Perfect Progressive emphasizes duration before another past action (for three years when)."
+                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for two years before).",
+                cues: ["for two years", "before"]
+            },
+            {
+                id: 53,
+                sentence: "The team ___ (practice) for weeks before the championship.",
+                answer: "had been practicing",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for weeks before).",
+                cues: ["for weeks", "before"]
+            },
+            {
+                id: 54,
+                sentence: "She ___ (wait) for the bus for twenty minutes when it finally arrived.",
+                answer: "had been waiting",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive emphasizes duration before another past action (for twenty minutes when).",
+                cues: ["for twenty minutes", "when"]
+            },
+            {
+                id: 55,
+                sentence: "They ___ (live) in that apartment for five years before they bought a house.",
+                answer: "had been living",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for five years before).",
+                cues: ["for five years", "before"]
+            },
+            {
+                id: 56,
+                sentence: "He ___ (run) for an hour when he felt exhausted.",
+                answer: "had been running",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive emphasizes duration before another past action (for an hour when).",
+                cues: ["for an hour", "when"]
+            },
+            {
+                id: 57,
+                sentence: "The workers ___ (build) the bridge for two years when it was completed.",
+                answer: "had been building",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for two years when).",
+                cues: ["for two years", "when"]
+            },
+            {
+                id: 58,
+                sentence: "I ___ (look) for my keys for ten minutes when I found them.",
+                answer: "had been looking",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive emphasizes duration before another past action (for ten minutes when).",
+                cues: ["for ten minutes", "when"]
+            },
+            {
+                id: 59,
+                sentence: "She ___ (prepare) for the exam for months before she took it.",
+                answer: "had been preparing",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for months before).",
+                cues: ["for months", "before"]
+            },
+            {
+                id: 60,
+                sentence: "We ___ (discuss) the problem for hours when we reached a solution.",
+                answer: "had been discussing",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive emphasizes duration before another past action (for hours when).",
+                cues: ["for hours", "when"]
             }
         ];
-
-        let stats = {
-            correct: 0,
-            incorrect: 0,
-            total: 0
-        };
 
         function normalizeAnswer(answer) {
             return answer.toLowerCase().trim();
@@ -372,10 +702,43 @@
             return userAnswer === correct;
         }
 
-        function updateStats() {
-            document.getElementById('correct-count').textContent = stats.correct;
-            document.getElementById('incorrect-count').textContent = stats.incorrect;
-            document.getElementById('total-count').textContent = stats.total;
+        function highlightCues(sentenceElement, cues) {
+            if (!cues || cues.length === 0) return;
+            
+            const input = sentenceElement.querySelector('input');
+            if (!input) return;
+            
+            // Get the current HTML
+            let html = sentenceElement.innerHTML;
+            
+            // Remove existing highlights
+            html = html.replace(/<span class="highlight">(.*?)<\/span>/gi, '$1');
+            
+            // Save input HTML temporarily
+            const inputHTML = input.outerHTML;
+            const inputPlaceholder = '___INPUT_PLACEHOLDER___';
+            html = html.replace(inputHTML, inputPlaceholder);
+            
+            // Highlight each cue (case-insensitive, whole words)
+            cues.forEach(cue => {
+                const cueLower = cue.toLowerCase();
+                // Escape special regex characters
+                const escapedCue = cueLower.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                // Match whole words, case-insensitive
+                const regex = new RegExp(`\\b(${escapedCue})\\b`, 'gi');
+                html = html.replace(regex, '<span class="highlight">$1</span>');
+            });
+            
+            // Restore input HTML
+            html = html.replace(inputPlaceholder, inputHTML);
+            sentenceElement.innerHTML = html;
+            
+            // Re-attach event listeners
+            const newInput = sentenceElement.querySelector('input');
+            if (newInput) {
+                newInput.addEventListener('blur', handleBlur);
+                newInput.addEventListener('keydown', handleKeyDown);
+            }
         }
 
         function createExerciseHTML(exercise) {
@@ -385,7 +748,7 @@
 
             return `
                 <div class="exercise-item" id="exercise-${exercise.id}">
-                    <div class="sentence">
+                    <div class="sentence" id="sentence-${exercise.id}">
                         ${beforeGap}
                         <input 
                             type="text" 
@@ -393,6 +756,7 @@
                             id="input-${exercise.id}"
                             data-answer="${exercise.answer}"
                             data-tense="${exercise.tense}"
+                            data-cues="${JSON.stringify(exercise.cues || [])}"
                             placeholder="fill in the blank"
                             autocomplete="off"
                         />
@@ -410,20 +774,31 @@
         function validateExercise(input) {
             const exerciseId = input.id.split('-')[1];
             const exerciseItem = document.getElementById(`exercise-${exerciseId}`);
+            const sentenceElement = document.getElementById(`sentence-${exerciseId}`);
             const feedback = document.getElementById(`feedback-${exerciseId}`);
             const hint = document.getElementById(`hint-${exerciseId}`);
             const correctAnswer = input.dataset.answer;
             const userAnswer = normalizeAnswer(input.value);
+            const cues = JSON.parse(input.dataset.cues || '[]');
 
             if (userAnswer === '') {
                 exerciseItem.classList.remove('correct', 'incorrect');
                 input.classList.remove('correct', 'incorrect');
                 feedback.classList.remove('show', 'correct', 'incorrect');
                 hint.classList.remove('show');
+                // Remove highlights when input is cleared
+                if (sentenceElement) {
+                    sentenceElement.innerHTML = sentenceElement.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/gi, '$1');
+                }
                 return;
             }
 
             const isCorrect = validateAnswer(input, correctAnswer);
+            
+            // Highlight cues when validation happens
+            if (sentenceElement && cues && cues.length > 0) {
+                highlightCues(sentenceElement, cues);
+            }
             
             if (isCorrect) {
                 exerciseItem.classList.add('correct');
@@ -433,13 +808,6 @@
                 feedback.textContent = '✓ Correct!';
                 feedback.className = 'feedback show correct';
                 hint.classList.add('show');
-                
-                if (!input.dataset.counted) {
-                    stats.correct++;
-                    stats.total++;
-                    input.dataset.counted = 'true';
-                    updateStats();
-                }
             } else {
                 exerciseItem.classList.add('incorrect');
                 exerciseItem.classList.remove('correct');
@@ -448,13 +816,6 @@
                 feedback.textContent = `✗ Incorrect. Try again!`;
                 feedback.className = 'feedback show incorrect';
                 hint.classList.add('show');
-                
-                if (!input.dataset.counted) {
-                    stats.incorrect++;
-                    stats.total++;
-                    input.dataset.counted = 'true';
-                    updateStats();
-                }
             }
         }
 
@@ -480,8 +841,6 @@
                 input.addEventListener('blur', handleBlur);
                 input.addEventListener('keydown', handleKeyDown);
             });
-
-            updateStats();
         }
 
         document.addEventListener('DOMContentLoaded', initializeExercises);
