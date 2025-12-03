@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Tenses Exercise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .exercise-item {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .exercise-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .exercise-item.correct {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+
+        .exercise-item.incorrect {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .sentence {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .gap-input {
+            display: inline-block;
+            min-width: 150px;
+            padding: 8px 12px;
+            font-size: 1.1em;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .gap-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .gap-input.correct {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .gap-input.incorrect {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .hint {
+            margin-top: 10px;
+            padding: 12px;
+            background: #e7f3ff;
+            border-radius: 5px;
+            border-left: 3px solid #2196F3;
+            font-size: 0.95em;
+            color: #1976D2;
+            display: none;
+        }
+
+        .hint.show {
+            display: block;
+        }
+
+        .hint-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .feedback {
+            margin-top: 8px;
+            font-size: 0.9em;
+            font-weight: 500;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            color: #28a745;
+        }
+
+        .feedback.incorrect {
+            color: #dc3545;
+        }
+
+        .tense-label {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #667eea;
+            color: white;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .stats {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .stats h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .stats-numbers {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Past Tenses Exercise</h1>
+        <p class="subtitle">Fill in the blanks with the correct past tense form</p>
+
+        <div id="exercises-container"></div>
+
+        <div class="stats">
+            <h2>Your Progress</h2>
+            <div class="stats-numbers">
+                <div class="stat-item">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="total-count">0</div>
+                    <div class="stat-label">Total</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const exercises = [
+            {
+                id: 1,
+                sentence: "Last week, my brother ___ (buy) a new bicycle.",
+                answer: "bought",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (last week)."
+            },
+            {
+                id: 2,
+                sentence: "I ___ (read) three books this month already.",
+                answer: "have read",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used for actions completed in a period that includes the present (this month)."
+            },
+            {
+                id: 3,
+                sentence: "The students ___ (practice) for two hours when the teacher entered.",
+                answer: "had been practicing",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration of an action before another past event (for two hours when)."
+            },
+            {
+                id: 4,
+                sentence: "When I called her, she ___ (cook) dinner.",
+                answer: "was cooking",
+                tense: "Past Progressive",
+                hint: "Past Progressive describes an action in progress when another action occurred (when I called)."
+            },
+            {
+                id: 5,
+                sentence: "They ___ (not/visit) the museum before last Tuesday.",
+                answer: "had not visited",
+                tense: "Past Perfect",
+                hint: "Past Perfect is used for actions completed before another past action (before last Tuesday)."
+            },
+            {
+                id: 6,
+                sentence: "Two days ago, we ___ (meet) our old friends at the park.",
+                answer: "met",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (two days ago)."
+            },
+            {
+                id: 7,
+                sentence: "She ___ (work) here for five years now.",
+                answer: "has worked",
+                tense: "Present Perfect",
+                hint: "Present Perfect with 'for' shows duration from past to present (for five years now)."
+            },
+            {
+                id: 8,
+                sentence: "The dog ___ (bark) all night, which kept us awake.",
+                answer: "was barking",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for actions in progress over a period in the past (all night)."
+            },
+            {
+                id: 9,
+                sentence: "Before the exam started, I ___ (review) all my notes.",
+                answer: "had reviewed",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows an action completed before another past action (before the exam started)."
+            },
+            {
+                id: 10,
+                sentence: "He ___ (drive) for six hours when he finally reached the destination.",
+                answer: "had been driving",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive emphasizes duration before another past action (for six hours when)."
+            },
+            {
+                id: 11,
+                sentence: "In 2019, my family ___ (move) to a new house.",
+                answer: "moved",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (in 2019)."
+            },
+            {
+                id: 12,
+                sentence: "I ___ (never/be) to Australia, but I'd love to visit.",
+                answer: "have never been",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used for life experiences without a specific time (never...before)."
+            },
+            {
+                id: 13,
+                sentence: "While they ___ (watch) TV, the power went out.",
+                answer: "were watching",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when interrupted (while...when)."
+            },
+            {
+                id: 14,
+                sentence: "By the time she got home, her parents ___ (already/leave).",
+                answer: "had already left",
+                tense: "Past Perfect",
+                hint: "Past Perfect with 'by the time' shows completion before another past action."
+            },
+            {
+                id: 15,
+                sentence: "The athlete ___ (train) for months before the competition.",
+                answer: "had been training",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for months before)."
+            },
+            {
+                id: 16,
+                sentence: "Yesterday morning, I ___ (wake) up at 6 AM.",
+                answer: "woke",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (yesterday morning)."
+            },
+            {
+                id: 17,
+                sentence: "How many times ___ (you/see) that movie?",
+                answer: "have you seen",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used to ask about experiences or actions up to now (how many times)."
+            },
+            {
+                id: 18,
+                sentence: "At midnight, we ___ (still/dance) at the party.",
+                answer: "were still dancing",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for actions at a specific time in the past (at midnight)."
+            },
+            {
+                id: 19,
+                sentence: "The team ___ (lose) three matches before they finally won one.",
+                answer: "had lost",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows the sequence of past events (lost three matches before they won)."
+            },
+            {
+                id: 20,
+                sentence: "She ___ (study) English for three years when she passed the exam.",
+                answer: "had been studying",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive emphasizes duration before another past action (for three years when)."
+            }
+        ];
+
+        let stats = {
+            correct: 0,
+            incorrect: 0,
+            total: 0
+        };
+
+        function normalizeAnswer(answer) {
+            return answer.toLowerCase().trim();
+        }
+
+        function validateAnswer(input, correctAnswer) {
+            const userAnswer = normalizeAnswer(input.value);
+            const correct = normalizeAnswer(correctAnswer);
+            
+            return userAnswer === correct;
+        }
+
+        function updateStats() {
+            document.getElementById('correct-count').textContent = stats.correct;
+            document.getElementById('incorrect-count').textContent = stats.incorrect;
+            document.getElementById('total-count').textContent = stats.total;
+        }
+
+        function createExerciseHTML(exercise) {
+            const parts = exercise.sentence.split('___');
+            const beforeGap = parts[0];
+            const afterGap = parts[1] || '';
+
+            return `
+                <div class="exercise-item" id="exercise-${exercise.id}">
+                    <div class="sentence">
+                        ${beforeGap}
+                        <input 
+                            type="text" 
+                            class="gap-input" 
+                            id="input-${exercise.id}"
+                            data-answer="${exercise.answer}"
+                            data-tense="${exercise.tense}"
+                            placeholder="fill in the blank"
+                            autocomplete="off"
+                        />
+                        ${afterGap}
+                    </div>
+                    <div class="feedback" id="feedback-${exercise.id}"></div>
+                    <div class="hint" id="hint-${exercise.id}">
+                        <div class="hint-title">💡 Why ${exercise.tense}?</div>
+                        ${exercise.hint}
+                    </div>
+                </div>
+            `;
+        }
+
+        function validateExercise(input) {
+            const exerciseId = input.id.split('-')[1];
+            const exerciseItem = document.getElementById(`exercise-${exerciseId}`);
+            const feedback = document.getElementById(`feedback-${exerciseId}`);
+            const hint = document.getElementById(`hint-${exerciseId}`);
+            const correctAnswer = input.dataset.answer;
+            const userAnswer = normalizeAnswer(input.value);
+
+            if (userAnswer === '') {
+                exerciseItem.classList.remove('correct', 'incorrect');
+                input.classList.remove('correct', 'incorrect');
+                feedback.classList.remove('show', 'correct', 'incorrect');
+                hint.classList.remove('show');
+                return;
+            }
+
+            const isCorrect = validateAnswer(input, correctAnswer);
+            
+            if (isCorrect) {
+                exerciseItem.classList.add('correct');
+                exerciseItem.classList.remove('incorrect');
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                feedback.textContent = '✓ Correct!';
+                feedback.className = 'feedback show correct';
+                hint.classList.add('show');
+                
+                if (!input.dataset.counted) {
+                    stats.correct++;
+                    stats.total++;
+                    input.dataset.counted = 'true';
+                    updateStats();
+                }
+            } else {
+                exerciseItem.classList.add('incorrect');
+                exerciseItem.classList.remove('correct');
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+                feedback.textContent = `✗ Incorrect. Try again!`;
+                feedback.className = 'feedback show incorrect';
+                hint.classList.add('show');
+                
+                if (!input.dataset.counted) {
+                    stats.incorrect++;
+                    stats.total++;
+                    input.dataset.counted = 'true';
+                    updateStats();
+                }
+            }
+        }
+
+        function handleBlur(event) {
+            validateExercise(event.target);
+        }
+
+        function handleKeyDown(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                validateExercise(event.target);
+            }
+        }
+
+        function initializeExercises() {
+            const container = document.getElementById('exercises-container');
+            
+            exercises.forEach(exercise => {
+                container.innerHTML += createExerciseHTML(exercise);
+            });
+
+            document.querySelectorAll('.gap-input').forEach(input => {
+                input.addEventListener('blur', handleBlur);
+                input.addEventListener('keydown', handleKeyDown);
+            });
+
+            updateStats();
+        }
+
+        document.addEventListener('DOMContentLoaded', initializeExercises);
+    </script>
+</body>
+</html>
