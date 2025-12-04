@@ -13,62 +13,198 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ffb6d9 0%, #ff9ec7 50%, #ffc0e1 100%);
             min-height: 100vh;
             padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '🌸';
+            position: fixed;
+            font-size: 2.5em;
+            opacity: 0.15;
+            top: 5%;
+            left: 3%;
+            animation: float 3s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '🌸';
+            position: fixed;
+            font-size: 2em;
+            opacity: 0.12;
+            top: 15%;
+            right: 8%;
+            animation: float 4s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Additional floating flowers */
+        .flower-1, .flower-2, .flower-3, .flower-4, .flower-5, .flower-6 {
+            position: fixed;
+            font-size: 1.8em;
+            opacity: 0.1;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .flower-1 {
+            content: '🌺';
+            top: 25%;
+            left: 10%;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .flower-2 {
+            content: '🌻';
+            top: 40%;
+            right: 5%;
+            animation: float 4.5s ease-in-out infinite;
+        }
+
+        .flower-3 {
+            content: '🌷';
+            top: 60%;
+            left: 7%;
+            animation: float 3.5s ease-in-out infinite;
+        }
+
+        .flower-4 {
+            content: '🌼';
+            top: 75%;
+            right: 12%;
+            animation: float 5.5s ease-in-out infinite;
+        }
+
+        .flower-5 {
+            content: '🌸';
+            top: 50%;
+            left: 15%;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .flower-6 {
+            content: '🌺';
+            top: 30%;
+            right: 15%;
+            animation: float 3.8s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
         }
 
         .container {
             max-width: 900px;
             margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: #fff5f9;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(255, 182, 217, 0.4), 0 0 0 3px #ffb6d9;
             padding: 40px;
+            border: 2px solid #ffc0e1;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                border-radius: 15px;
+            }
         }
 
         h1 {
-            color: #333;
+            color: #ff69b4;
             text-align: center;
             margin-bottom: 10px;
             font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(255, 182, 217, 0.5);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 8px;
+            }
         }
 
         .subtitle {
             text-align: center;
-            color: #666;
+            color: #ff91c7;
             margin-bottom: 30px;
             font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .subtitle {
+                font-size: 0.95em;
+                margin-bottom: 20px;
+            }
         }
 
         .exercise-item {
             margin-bottom: 30px;
             padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
+            background: #fff;
+            border-radius: 20px;
+            border-left: 5px solid #ffb6d9;
+            border-right: 2px solid #ffc0e1;
+            border-top: 2px solid #ffc0e1;
+            border-bottom: 2px solid #ffc0e1;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 182, 217, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .exercise-item {
+                margin-bottom: 20px;
+                padding: 15px;
+                border-radius: 8px;
+            }
         }
 
         .exercise-item:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(255, 182, 217, 0.4);
+            transform: translateY(-2px);
         }
 
         .exercise-item.correct {
-            border-left-color: #28a745;
-            background: #d4edda;
+            border-left-color: #90ee90;
+            background: #f0fff0;
+            border-color: #90ee90;
         }
 
         .exercise-item.incorrect {
-            border-left-color: #dc3545;
-            background: #f8d7da;
+            border-left-color: #ffb6c1;
+            background: #fff0f5;
+            border-color: #ffb6c1;
         }
 
         .sentence {
             font-size: 1.2em;
             line-height: 1.8;
             margin-bottom: 10px;
-            color: #333;
+            color: #5a5a5a;
+        }
+
+        @media (max-width: 768px) {
+            .sentence {
+                font-size: 1em;
+                line-height: 1.6;
+                margin-bottom: 12px;
+            }
         }
 
         .gap-input {
@@ -76,38 +212,121 @@
             min-width: 150px;
             padding: 8px 12px;
             font-size: 1.1em;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            background: white;
+            border: 2px solid #ffb6d9;
+            border-radius: 15px;
+            background: #fff;
             transition: all 0.3s ease;
             font-family: inherit;
+            box-shadow: 0 2px 8px rgba(255, 182, 217, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .gap-input {
+                min-width: 150px;
+                padding: 8px 12px;
+                font-size: 1.1em;
+                display: inline-block;
+            }
         }
 
         .gap-input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #ff69b4;
+            box-shadow: 0 0 0 3px rgba(255, 182, 217, 0.3), 0 4px 12px rgba(255, 182, 217, 0.2);
         }
 
         .gap-input.correct {
-            border-color: #28a745;
-            background: #d4edda;
+            border-color: #90ee90;
+            background: #f0fff0;
+            box-shadow: 0 2px 8px rgba(144, 238, 144, 0.3);
         }
 
         .gap-input.incorrect {
-            border-color: #dc3545;
-            background: #f8d7da;
+            border-color: #ffb6c1;
+            background: #fff0f5;
+            box-shadow: 0 2px 8px rgba(255, 182, 193, 0.3);
+        }
+
+        .button-container {
+            margin-top: 8px;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .button-container {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+        }
+
+        .check-button {
+            padding: 4px 8px;
+            font-size: 0.85em;
+            background: #ffb6d9;
+            color: #fff;
+            border: 2px solid #ff91c7;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            white-space: nowrap;
+            position: relative;
+            z-index: 10;
+            pointer-events: auto;
+            box-shadow: 0 2px 6px rgba(255, 182, 217, 0.3);
+        }
+
+        .check-button:hover {
+            background: #ff91c7;
+            color: #fff;
+            border-color: #ff69b4;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(255, 182, 217, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .check-button {
+                padding: 6px 10px;
+                font-size: 0.85em;
+                min-height: 32px; /* Still touch-friendly but smaller */
+            }
+            
+            .button-container {
+                text-align: left;
+            }
+        }
+
+
+        .check-button:active {
+            transform: translateY(0);
+        }
+
+        .check-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .hint {
             margin-top: 10px;
             padding: 12px;
-            background: #e7f3ff;
-            border-radius: 5px;
-            border-left: 3px solid #2196F3;
+            background: #fff0f8;
+            border-radius: 15px;
+            border-left: 4px solid #ffb6d9;
+            border-right: 2px solid #ffc0e1;
             font-size: 0.95em;
-            color: #1976D2;
+            color: #d63384;
             display: none;
+            box-shadow: 0 2px 8px rgba(255, 182, 217, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hint {
+                padding: 10px;
+                font-size: 0.9em;
+                margin-top: 8px;
+            }
         }
 
         .hint.show {
@@ -126,16 +345,25 @@
             display: none;
         }
 
+        @media (max-width: 768px) {
+            .feedback {
+                font-size: 0.85em;
+                margin-top: 6px;
+            }
+        }
+
         .feedback.show {
             display: block;
         }
 
         .feedback.correct {
-            color: #28a745;
+            color: #228b22;
+            font-weight: 600;
         }
 
         .feedback.incorrect {
-            color: #dc3545;
+            color: #ff69b4;
+            font-weight: 600;
         }
 
         .tense-label {
@@ -185,16 +413,62 @@
         }
 
         .highlight {
-            background-color: #fff3cd;
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-weight: 600;
-            color: #856404;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            background-color: #ffe4f0;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-weight: 700;
+            color: #ff69b4;
+            box-shadow: 0 2px 4px rgba(255, 182, 217, 0.3);
+            border: 1px solid #ffb6d9;
+        }
+
+        @media (max-width: 768px) {
+            .highlight {
+                padding: 2px 3px;
+                font-size: 0.95em;
+            }
+        }
+
+        /* Additional mobile optimizations */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .container {
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .sentence {
+                font-size: 0.95em;
+                line-height: 1.5;
+            }
+
+            .gap-input {
+                font-size: 1.1em; /* Same as web version */
+                min-width: 150px;
+                padding: 8px 12px;
+                display: inline-block;
+            }
+
+            .exercise-item {
+                padding: 12px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="flower-1">🌺</div>
+    <div class="flower-2">🌻</div>
+    <div class="flower-3">🌷</div>
+    <div class="flower-4">🌼</div>
+    <div class="flower-5">🌸</div>
+    <div class="flower-6">🌺</div>
     <div class="container">
         <h1>Past Tenses Exercise</h1>
         <p class="subtitle">Fill in the blanks with the correct past tense form</p>
@@ -688,6 +962,731 @@
                 tense: "Past Perfect Progressive",
                 hint: "Past Perfect Progressive emphasizes duration before another past action (for hours when).",
                 cues: ["for hours", "when"]
+            },
+            // Additional Simple Past (61-78)
+            {
+                id: 61,
+                sentence: "Last Friday, the team ___ (win) the championship match.",
+                answer: "won",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (last Friday).",
+                cues: ["last friday"]
+            },
+            {
+                id: 62,
+                sentence: "In 2018, she ___ (start) her own business.",
+                answer: "started",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (in 2018).",
+                cues: ["in 2018"]
+            },
+            {
+                id: 63,
+                sentence: "Yesterday evening, we ___ (have) dinner at a fancy restaurant.",
+                answer: "had",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (yesterday evening).",
+                cues: ["yesterday evening"]
+            },
+            {
+                id: 64,
+                sentence: "Two weeks ago, I ___ (break) my phone screen.",
+                answer: "broke",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (two weeks ago).",
+                cues: ["two weeks ago"]
+            },
+            {
+                id: 65,
+                sentence: "Last month, they ___ (buy) a new car.",
+                answer: "bought",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (last month).",
+                cues: ["last month"]
+            },
+            {
+                id: 66,
+                sentence: "In the afternoon, the children ___ (go) to the playground.",
+                answer: "went",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions in the past (in the afternoon).",
+                cues: ["in the afternoon"]
+            },
+            {
+                id: 67,
+                sentence: "Last Tuesday, he ___ (receive) an important email.",
+                answer: "received",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (last Tuesday).",
+                cues: ["last tuesday"]
+            },
+            {
+                id: 68,
+                sentence: "A month ago, we ___ (decide) to move to a bigger apartment.",
+                answer: "decided",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (a month ago).",
+                cues: ["a month ago"]
+            },
+            {
+                id: 69,
+                sentence: "Last winter, it ___ (snow) heavily for three days.",
+                answer: "snowed",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (last winter).",
+                cues: ["last winter"]
+            },
+            {
+                id: 70,
+                sentence: "In 2015, my parents ___ (celebrate) their 25th wedding anniversary.",
+                answer: "celebrated",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (in 2015).",
+                cues: ["in 2015"]
+            },
+            {
+                id: 71,
+                sentence: "Yesterday, the teacher ___ (explain) the new grammar rules.",
+                answer: "explained",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (yesterday).",
+                cues: ["yesterday"]
+            },
+            {
+                id: 72,
+                sentence: "Last weekend, we ___ (spend) time at the beach.",
+                answer: "spent",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (last weekend).",
+                cues: ["last weekend"]
+            },
+            {
+                id: 73,
+                sentence: "Three days ago, the company ___ (announce) a new product.",
+                answer: "announced",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (three days ago).",
+                cues: ["three days ago"]
+            },
+            {
+                id: 74,
+                sentence: "In the morning, she ___ (drink) a cup of coffee.",
+                answer: "drank",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions in the past (in the morning).",
+                cues: ["in the morning"]
+            },
+            {
+                id: 75,
+                sentence: "Last year, I ___ (learn) how to play the guitar.",
+                answer: "learned",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (last year).",
+                cues: ["last year"]
+            },
+            {
+                id: 76,
+                sentence: "A few hours ago, the package ___ (arrive) at my door.",
+                answer: "arrived",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (a few hours ago).",
+                cues: ["a few hours ago"]
+            },
+            {
+                id: 77,
+                sentence: "Last Thursday, the students ___ (take) their final exam.",
+                answer: "took",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (last Thursday).",
+                cues: ["last thursday"]
+            },
+            {
+                id: 78,
+                sentence: "In 2017, the city ___ (build) a new library.",
+                answer: "built",
+                tense: "Simple Past",
+                hint: "Simple Past is used for completed actions at a specific time in the past (in 2017).",
+                cues: ["in 2017"]
+            },
+            // Additional Present Perfect (79-96)
+            {
+                id: 79,
+                sentence: "I ___ (not/see) my cousin for over a year now.",
+                answer: "have not seen",
+                tense: "Present Perfect",
+                hint: "Present Perfect with 'for' shows duration from past to present (for over a year now).",
+                cues: ["for over a year", "now"]
+            },
+            {
+                id: 80,
+                sentence: "She ___ (just/complete) her master's degree.",
+                answer: "has just completed",
+                tense: "Present Perfect",
+                hint: "Present Perfect with 'just' shows a very recent action (just completed).",
+                cues: ["just"]
+            },
+            {
+                id: 81,
+                sentence: "They ___ (live) in Berlin since 2019.",
+                answer: "have lived",
+                tense: "Present Perfect",
+                hint: "Present Perfect with 'since' shows a state or action that started in the past and continues.",
+                cues: ["since 2019"]
+            },
+            {
+                id: 82,
+                sentence: "Have you ___ (ever/try) bungee jumping?",
+                answer: "ever tried",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used to ask about life experiences (have you ever).",
+                cues: ["have you", "ever"]
+            },
+            {
+                id: 83,
+                sentence: "We ___ (not/decide) where to go on vacation yet.",
+                answer: "have not decided",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used for actions up to now (not...yet).",
+                cues: ["not", "yet"]
+            },
+            {
+                id: 84,
+                sentence: "He ___ (work) as a teacher for the past five years.",
+                answer: "has worked",
+                tense: "Present Perfect",
+                hint: "Present Perfect with 'for' shows duration from past to present (for the past five years).",
+                cues: ["for the past five years"]
+            },
+            {
+                id: 85,
+                sentence: "I ___ (already/read) that book twice.",
+                answer: "have already read",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used for actions completed up to now (already...twice).",
+                cues: ["already"]
+            },
+            {
+                id: 86,
+                sentence: "She ___ (never/visit) Asia before.",
+                answer: "has never visited",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used for experiences in the past without a specific time (never...before).",
+                cues: ["never", "before"]
+            },
+            {
+                id: 87,
+                sentence: "How many times ___ (you/be) to the cinema this month?",
+                answer: "have you been",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used to ask about actions in a period that includes the present (this month).",
+                cues: ["how many times", "this month"]
+            },
+            {
+                id: 88,
+                sentence: "They ___ (not/finish) their project so far.",
+                answer: "have not finished",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used for actions up to now (so far).",
+                cues: ["not", "so far"]
+            },
+            {
+                id: 89,
+                sentence: "I ___ (know) her since we were in high school.",
+                answer: "have known",
+                tense: "Present Perfect",
+                hint: "Present Perfect with 'since' shows a state that started in the past and continues.",
+                cues: ["since"]
+            },
+            {
+                id: 90,
+                sentence: "He ___ (travel) to fifteen different countries.",
+                answer: "has traveled",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used for life experiences without a specific time.",
+                cues: []
+            },
+            {
+                id: 91,
+                sentence: "We ___ (not/hear) from them for a while.",
+                answer: "have not heard",
+                tense: "Present Perfect",
+                hint: "Present Perfect with 'for' shows duration from past to present (for a while).",
+                cues: ["not", "for a while"]
+            },
+            {
+                id: 92,
+                sentence: "She ___ (just/arrive) at the airport.",
+                answer: "has just arrived",
+                tense: "Present Perfect",
+                hint: "Present Perfect with 'just' shows a very recent action (just arrived).",
+                cues: ["just"]
+            },
+            {
+                id: 93,
+                sentence: "I ___ (study) English for six months now.",
+                answer: "have studied",
+                tense: "Present Perfect",
+                hint: "Present Perfect with 'for' shows duration from past to present (for six months now).",
+                cues: ["for six months", "now"]
+            },
+            {
+                id: 94,
+                sentence: "Have you ___ (ever/eat) sushi?",
+                answer: "ever eaten",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used to ask about life experiences (have you ever).",
+                cues: ["have you", "ever"]
+            },
+            {
+                id: 95,
+                sentence: "They ___ (already/pay) for the tickets.",
+                answer: "have already paid",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used for recently completed actions (already paid).",
+                cues: ["already"]
+            },
+            {
+                id: 96,
+                sentence: "He ___ (not/see) that movie yet.",
+                answer: "has not seen",
+                tense: "Present Perfect",
+                hint: "Present Perfect is used for actions up to now (not...yet).",
+                cues: ["not", "yet"]
+            },
+            // Additional Past Perfect (97-114)
+            {
+                id: 97,
+                sentence: "After I ___ (finish) my breakfast, I left for work.",
+                answer: "had finished",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows the sequence of past events (after I finished, then I left).",
+                cues: ["after"]
+            },
+            {
+                id: 98,
+                sentence: "By the time the fire department arrived, the fire ___ (spread) to the next building.",
+                answer: "had spread",
+                tense: "Past Perfect",
+                hint: "Past Perfect with 'by the time' shows completion before another past action.",
+                cues: ["by the time"]
+            },
+            {
+                id: 99,
+                sentence: "She ___ (not/realize) her mistake until it was too late.",
+                answer: "had not realized",
+                tense: "Past Perfect",
+                hint: "Past Perfect is used for actions before another past action (not...until).",
+                cues: ["not", "until"]
+            },
+            {
+                id: 100,
+                sentence: "Before the guests arrived, we ___ (prepare) everything.",
+                answer: "had prepared",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows an action completed before another past action (before the guests arrived).",
+                cues: ["before"]
+            },
+            {
+                id: 101,
+                sentence: "By 2018, he ___ (publish) three books.",
+                answer: "had published",
+                tense: "Past Perfect",
+                hint: "Past Perfect is used for actions completed before a specific time in the past (by 2018).",
+                cues: ["by 2018"]
+            },
+            {
+                id: 102,
+                sentence: "After they ___ (eat) dinner, they watched a movie.",
+                answer: "had eaten",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows the sequence of past events (after they ate, then they watched).",
+                cues: ["after"]
+            },
+            {
+                id: 103,
+                sentence: "The train ___ (already/leave) when we reached the station.",
+                answer: "had already left",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows completion before another past action (already...when).",
+                cues: ["already", "when"]
+            },
+            {
+                id: 104,
+                sentence: "Before she moved to Paris, she ___ (study) French for two years.",
+                answer: "had studied",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows an action completed before another past action (before she moved).",
+                cues: ["before"]
+            },
+            {
+                id: 105,
+                sentence: "By the end of the year, they ___ (complete) all their goals.",
+                answer: "had completed",
+                tense: "Past Perfect",
+                hint: "Past Perfect is used for actions completed before a specific time in the past (by the end of the year).",
+                cues: ["by the end of the year"]
+            },
+            {
+                id: 106,
+                sentence: "After he ___ (graduate), he started looking for a job.",
+                answer: "had graduated",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows the sequence of past events (after he graduated, then he started).",
+                cues: ["after"]
+            },
+            {
+                id: 107,
+                sentence: "I ___ (never/be) to that restaurant before last night.",
+                answer: "had never been",
+                tense: "Past Perfect",
+                hint: "Past Perfect is used for actions before another past action (never...before last night).",
+                cues: ["never", "before"]
+            },
+            {
+                id: 108,
+                sentence: "By the time we got there, the show ___ (begin).",
+                answer: "had begun",
+                tense: "Past Perfect",
+                hint: "Past Perfect with 'by the time' shows completion before another past action.",
+                cues: ["by the time"]
+            },
+            {
+                id: 109,
+                sentence: "Before the storm hit, we ___ (secure) all the windows.",
+                answer: "had secured",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows an action completed before another past action (before the storm hit).",
+                cues: ["before"]
+            },
+            {
+                id: 110,
+                sentence: "After she ___ (pack) her bags, she called a taxi.",
+                answer: "had packed",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows the sequence of past events (after she packed, then she called).",
+                cues: ["after"]
+            },
+            {
+                id: 111,
+                sentence: "By midnight, everyone ___ (leave) the party.",
+                answer: "had left",
+                tense: "Past Perfect",
+                hint: "Past Perfect is used for actions completed before a specific time in the past (by midnight).",
+                cues: ["by midnight"]
+            },
+            {
+                id: 112,
+                sentence: "Before I met him, I ___ (hear) many good things about him.",
+                answer: "had heard",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows an action completed before another past action (before I met).",
+                cues: ["before"]
+            },
+            {
+                id: 113,
+                sentence: "After they ___ (discuss) the problem, they found a solution.",
+                answer: "had discussed",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows the sequence of past events (after they discussed, then they found).",
+                cues: ["after"]
+            },
+            {
+                id: 114,
+                sentence: "By the time the doctor arrived, the patient ___ (already/recover).",
+                answer: "had already recovered",
+                tense: "Past Perfect",
+                hint: "Past Perfect shows completion before another past action (already...by the time).",
+                cues: ["by the time", "already"]
+            },
+            // Additional Past Progressive (115-132)
+            {
+                id: 115,
+                sentence: "While I ___ (shop), I ran into an old friend.",
+                answer: "was shopping",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when interrupted (while...when).",
+                cues: ["while"]
+            },
+            {
+                id: 116,
+                sentence: "At 3 PM yesterday, they ___ (have) a meeting.",
+                answer: "were having",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for actions at a specific time in the past (at 3 PM yesterday).",
+                cues: ["at 3 pm", "yesterday"]
+            },
+            {
+                id: 117,
+                sentence: "The phone rang while she ___ (read) a book.",
+                answer: "was reading",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when interrupted (while).",
+                cues: ["while"]
+            },
+            {
+                id: 118,
+                sentence: "What ___ (you/do) when the power went out?",
+                answer: "were you doing",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when another action happened (when the power went out).",
+                cues: ["when"]
+            },
+            {
+                id: 119,
+                sentence: "During the concert, the audience ___ (sing) along with the band.",
+                answer: "was singing",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for actions in progress over a period in the past (during the concert).",
+                cues: ["during"]
+            },
+            {
+                id: 120,
+                sentence: "I ___ (walk) home when I saw the accident.",
+                answer: "was walking",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when another action happened (when I saw).",
+                cues: ["when"]
+            },
+            {
+                id: 121,
+                sentence: "At that moment, everyone ___ (wait) for the announcement.",
+                answer: "was waiting",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for actions at a specific time in the past (at that moment).",
+                cues: ["at that moment"]
+            },
+            {
+                id: 122,
+                sentence: "While they ___ (cook), the smoke alarm went off.",
+                answer: "were cooking",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when interrupted (while...when).",
+                cues: ["while"]
+            },
+            {
+                id: 123,
+                sentence: "The students ___ (work) on their projects when the bell rang.",
+                answer: "were working",
+                tense: "Past Progressive",
+                hint: "Past Progressive describes an ongoing action interrupted by another action (when the bell rang).",
+                cues: ["when"]
+            },
+            {
+                id: 124,
+                sentence: "I ___ (drive) to work when I remembered I forgot my keys.",
+                answer: "was driving",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when another action happened (when I remembered).",
+                cues: ["when"]
+            },
+            {
+                id: 125,
+                sentence: "At noon, the workers ___ (take) their lunch break.",
+                answer: "were taking",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for actions at a specific time in the past (at noon).",
+                cues: ["at noon"]
+            },
+            {
+                id: 126,
+                sentence: "While we ___ (watch) the movie, someone knocked on the door.",
+                answer: "were watching",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when interrupted (while...when).",
+                cues: ["while"]
+            },
+            {
+                id: 127,
+                sentence: "She ___ (still/sleep) when I called her at 10 AM.",
+                answer: "was still sleeping",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for actions at a specific time in the past (still...at 10 AM).",
+                cues: ["still", "at 10 am"]
+            },
+            {
+                id: 128,
+                sentence: "The birds ___ (sing) when the sun rose.",
+                answer: "were singing",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when another action happened (when the sun rose).",
+                cues: ["when"]
+            },
+            {
+                id: 129,
+                sentence: "While I ___ (study), my roommate was playing music.",
+                answer: "was studying",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for actions in progress at a specific time in the past (while).",
+                cues: ["while"]
+            },
+            {
+                id: 130,
+                sentence: "At that time, they ___ (plan) their wedding.",
+                answer: "were planning",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for actions at a specific time in the past (at that time).",
+                cues: ["at that time"]
+            },
+            {
+                id: 131,
+                sentence: "I ___ (jog) in the park when it started raining.",
+                answer: "was jogging",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for an action in progress when interrupted (when it started).",
+                cues: ["when"]
+            },
+            {
+                id: 132,
+                sentence: "While the children ___ (play) outside, their mother was preparing dinner.",
+                answer: "were playing",
+                tense: "Past Progressive",
+                hint: "Past Progressive is used for actions in progress at a specific time in the past (while).",
+                cues: ["while"]
+            },
+            // Additional Past Perfect Progressive (133-150)
+            {
+                id: 133,
+                sentence: "She ___ (wait) for the bus for twenty minutes when it finally came.",
+                answer: "had been waiting",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive emphasizes duration before another past action (for twenty minutes when).",
+                cues: ["for twenty minutes", "when"]
+            },
+            {
+                id: 134,
+                sentence: "They ___ (argue) for hours before they reached an agreement.",
+                answer: "had been arguing",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for hours before).",
+                cues: ["for hours", "before"]
+            },
+            {
+                id: 135,
+                sentence: "He ___ (practice) the piano for three hours when his teacher arrived.",
+                answer: "had been practicing",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive emphasizes duration before another past action (for three hours when).",
+                cues: ["for three hours", "when"]
+            },
+            {
+                id: 136,
+                sentence: "I ___ (search) for my keys for fifteen minutes when I found them.",
+                answer: "had been searching",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive emphasizes duration before another past action (for fifteen minutes when).",
+                cues: ["for fifteen minutes", "when"]
+            },
+            {
+                id: 137,
+                sentence: "The workers ___ (dig) the foundation for two days when they hit bedrock.",
+                answer: "had been digging",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration before another past action (for two days when).",
+                cues: ["for two days", "when"]
+            },
+            {
+                id: 138,
+                sentence: "She ___ (study) for the exam for weeks before she took it.",
+                answer: "had been studying",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for weeks before).",
+                cues: ["for weeks", "before"]
+            },
+            {
+                id: 139,
+                sentence: "We ___ (try) to fix the car for hours when the mechanic finally arrived.",
+                answer: "had been trying",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive emphasizes duration before another past action (for hours when).",
+                cues: ["for hours", "when"]
+            },
+            {
+                id: 140,
+                sentence: "They ___ (work) on the project for months before they presented it.",
+                answer: "had been working",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for months before).",
+                cues: ["for months", "before"]
+            },
+            {
+                id: 141,
+                sentence: "He ___ (exercise) for an hour when he felt exhausted.",
+                answer: "had been exercising",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive emphasizes duration before another past action (for an hour when).",
+                cues: ["for an hour", "when"]
+            },
+            {
+                id: 142,
+                sentence: "I ___ (look) for a job for six months before I got an offer.",
+                answer: "had been looking",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for six months before).",
+                cues: ["for six months", "before"]
+            },
+            {
+                id: 143,
+                sentence: "The team ___ (train) for the competition for a year when they finally competed.",
+                answer: "had been training",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration before another past action (for a year when).",
+                cues: ["for a year", "when"]
+            },
+            {
+                id: 144,
+                sentence: "She ___ (save) money for two years before she bought the house.",
+                answer: "had been saving",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for two years before).",
+                cues: ["for two years", "before"]
+            },
+            {
+                id: 145,
+                sentence: "We ___ (plan) the trip for months when we finally booked the tickets.",
+                answer: "had been planning",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration before another past action (for months when).",
+                cues: ["for months", "when"]
+            },
+            {
+                id: 146,
+                sentence: "He ___ (write) the novel for three years before he published it.",
+                answer: "had been writing",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for three years before).",
+                cues: ["for three years", "before"]
+            },
+            {
+                id: 147,
+                sentence: "They ___ (build) the bridge for eighteen months when it was completed.",
+                answer: "had been building",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for eighteen months when).",
+                cues: ["for eighteen months", "when"]
+            },
+            {
+                id: 148,
+                sentence: "I ___ (wait) in line for forty minutes when the store finally opened.",
+                answer: "had been waiting",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive emphasizes duration before another past action (for forty minutes when).",
+                cues: ["for forty minutes", "when"]
+            },
+            {
+                id: 149,
+                sentence: "She ___ (prepare) for the presentation for days before she gave it.",
+                answer: "had been preparing",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive shows duration of an action up to a point in the past (for days before).",
+                cues: ["for days", "before"]
+            },
+            {
+                id: 150,
+                sentence: "We ___ (discuss) the proposal for several hours when we reached a decision.",
+                answer: "had been discussing",
+                tense: "Past Perfect Progressive",
+                hint: "Past Perfect Progressive emphasizes duration before another past action (for several hours when).",
+                cues: ["for several hours", "when"]
             }
         ];
 
@@ -706,7 +1705,11 @@
             if (!cues || cues.length === 0) return;
             
             const input = sentenceElement.querySelector('input');
+            const button = sentenceElement.querySelector('.check-button');
             if (!input) return;
+            
+            // Get exerciseId early before DOM changes
+            const exerciseId = input.id ? input.id.split('-')[1] : null;
             
             // Get the current HTML
             let html = sentenceElement.innerHTML;
@@ -731,14 +1734,28 @@
             
             // Restore input HTML
             html = html.replace(inputPlaceholder, inputHTML);
+            
             sentenceElement.innerHTML = html;
             
-            // Re-attach event listeners
+            // Re-attach event listeners for input and restore data attributes
             const newInput = sentenceElement.querySelector('input');
             if (newInput) {
+                // Preserve input value and data attributes from original input
+                const originalValue = input.value;
+                const originalAnswer = input.dataset.answer;
+                const originalTense = input.dataset.tense;
+                const originalCues = input.dataset.cues || input.getAttribute('data-cues');
+                
+                newInput.value = originalValue;
+                if (originalAnswer) newInput.setAttribute('data-answer', originalAnswer);
+                if (originalTense) newInput.setAttribute('data-tense', originalTense);
+                if (originalCues) newInput.setAttribute('data-cues', originalCues);
+                
                 newInput.addEventListener('blur', handleBlur);
                 newInput.addEventListener('keydown', handleKeyDown);
             }
+            // Button is in separate container, so it's not affected by sentenceElement changes
+            // No need to re-attach listener
         }
 
         function createExerciseHTML(exercise) {
@@ -757,10 +1774,12 @@
                             data-answer="${exercise.answer}"
                             data-tense="${exercise.tense}"
                             data-cues="${JSON.stringify(exercise.cues || [])}"
-                            placeholder="fill in the blank"
                             autocomplete="off"
                         />
                         ${afterGap}
+                    </div>
+                    <div class="button-container">
+                        <button class="check-button" id="check-${exercise.id}" type="button">Check</button>
                     </div>
                     <div class="feedback" id="feedback-${exercise.id}"></div>
                     <div class="hint" id="hint-${exercise.id}">
@@ -779,7 +1798,21 @@
             const hint = document.getElementById(`hint-${exerciseId}`);
             const correctAnswer = input.dataset.answer;
             const userAnswer = normalizeAnswer(input.value);
-            const cues = JSON.parse(input.dataset.cues || '[]');
+            
+            // Safely parse cues with error handling
+            let cues = [];
+            try {
+                const cuesData = input.dataset.cues || input.getAttribute('data-cues') || '[]';
+                if (cuesData && cuesData !== '') {
+                    cues = JSON.parse(cuesData);
+                }
+            } catch (e) {
+                // If parsing fails, try to get cues from the original exercise data
+                const exercise = exercises.find(ex => ex.id === parseInt(exerciseId));
+                if (exercise && exercise.cues) {
+                    cues = exercise.cues;
+                }
+            }
 
             if (userAnswer === '') {
                 exerciseItem.classList.remove('correct', 'incorrect');
@@ -798,7 +1831,11 @@
             // Highlight cues when validation happens
             if (sentenceElement && cues && cues.length > 0) {
                 highlightCues(sentenceElement, cues);
+                // Get the input again after highlighting (it might have been recreated)
+                input = document.getElementById(`input-${exerciseId}`);
             }
+            
+            if (!input) return; // Safety check
             
             if (isCorrect) {
                 exerciseItem.classList.add('correct');
@@ -807,6 +1844,7 @@
                 input.classList.remove('incorrect');
                 feedback.textContent = '✓ Correct!';
                 feedback.className = 'feedback show correct';
+                feedback.style.display = 'block';
                 hint.classList.add('show');
             } else {
                 exerciseItem.classList.add('incorrect');
@@ -815,6 +1853,7 @@
                 input.classList.remove('correct');
                 feedback.textContent = `✗ Incorrect. Try again!`;
                 feedback.className = 'feedback show incorrect';
+                feedback.style.display = 'block';
                 hint.classList.add('show');
             }
         }
@@ -833,6 +1872,20 @@
             }
         }
 
+        function handleCheckButtonClick(button) {
+            if (!button) return;
+            const exerciseId = button.id ? button.id.split('-')[1] : null;
+            if (!exerciseId) return;
+            
+            const input = document.getElementById(`input-${exerciseId}`);
+            if (input) {
+                validateExercise(input);
+            }
+        }
+        
+        // Make function globally accessible for inline onclick
+        window.handleCheckButtonClick = handleCheckButtonClick;
+
         function initializeExercises() {
             const container = document.getElementById('exercises-container');
             
@@ -840,10 +1893,41 @@
                 container.innerHTML += createExerciseHTML(exercise);
             });
 
+            // Attach event listeners to inputs
             document.querySelectorAll('.gap-input').forEach(input => {
                 input.addEventListener('blur', handleBlur);
                 input.addEventListener('keydown', handleKeyDown);
             });
+
+            // Attach event listeners directly to check buttons
+            document.querySelectorAll('.check-button').forEach(button => {
+                button.onclick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const exerciseId = this.id.split('-')[1];
+                    const input = document.getElementById(`input-${exerciseId}`);
+                    if (input) {
+                        validateExercise(input);
+                    }
+                    return false;
+                };
+            });
+
+            // Also use event delegation as backup (works even after DOM changes)
+            container.addEventListener('click', function(e) {
+                const button = e.target;
+                if (button && button.classList && button.classList.contains('check-button')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const exerciseId = button.id ? button.id.split('-')[1] : null;
+                    if (exerciseId) {
+                        const input = document.getElementById(`input-${exerciseId}`);
+                        if (input) {
+                            validateExercise(input);
+                        }
+                    }
+                }
+            }, true); // Use capture phase to ensure it fires
         }
 
         document.addEventListener('DOMContentLoaded', initializeExercises);
